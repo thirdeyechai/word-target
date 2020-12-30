@@ -19,6 +19,23 @@ function fillTarget(word) {
     }  
 }
 
-const targetWord = 'AUTHORITY';
-let shuffledWord = shuffleWord(targetWord);
-fillTarget(shuffledWord);
+/** Loads the list of 9 letter words */
+function loadWordList(file) {
+    return fetch(file)
+        .then(response => response.text())
+        .then(text => { return text; })
+        .catch(error => console.log(error))
+}
+/** Awaits fetch call before initialising everything */
+async function storeWordList() {
+    wordList = await loadWordList("words.txt");
+    wordList = wordList.split("\r\n");
+    targetWord = wordList[Math.floor(Math.random() * wordList.length)];
+    shuffledWord = shuffleWord(targetWord.toUpperCase());
+    fillTarget(shuffledWord);
+}
+
+var wordList;
+var targetWord;
+var shuffledWord;
+storeWordList();
