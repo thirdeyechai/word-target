@@ -86,6 +86,11 @@ function addWordToList(word) {
     li.appendChild(document.createTextNode(word));
     ul.prepend(li);
 }
+/** Jumbles the target letters to allow the user to view a reshuffled version of the word */
+function jumbleLetters() {
+    shuffledWord = shuffleWord(shuffledWord.join(''));
+    fillTarget(shuffledWord);
+}
 
 var dictionary;
 var targetWordList;
