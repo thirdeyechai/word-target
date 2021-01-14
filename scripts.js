@@ -84,7 +84,7 @@ function addWordToList(word) {
     let ul = document.getElementById("guessed-words");
     let li = document.createElement("li");
     li.appendChild(document.createTextNode(word));
-    ul.appendChild(li);
+    ul.prepend(li);
 }
 
 var dictionary;
