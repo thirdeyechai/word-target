@@ -1,10 +1,8 @@
 /** Given a word, randomly jumbles the letters */
 function shuffleWord(word) {
-    word = word.split("");
-    let len = word.length;
-
-    for (let i=0; i<len; i++) {
-        let j = Math.floor(Math.random() *len);
+    word = word.split("");  
+    for (let i=0; i<word.length; i++) {
+        let j = Math.floor(Math.random() *word.length);
         let temp = word[i];
         word[i] = word[j];
         word[j] = temp;
@@ -58,15 +56,21 @@ function checkWord() {
         console.log('valid letters used from target');
         if (dictionary.includes(document.getElementById("guess").value)) {
             console.log('appears in dictionary');
+            addWordToList(document.getElementById("guess").value)
         } else {
             console.log("doesn't appear in dictionary")
         }
     } else {
         console.log('invalid letters from target used');
     }
-    // if (dictionary.includes(guess)) {
-    //     console.log(`${guess} appears in the list!`);
-    // }
+}
+
+/** Adds a word to the list of correctly guessed words */
+function addWordToList(word) {
+    let ul = document.getElementById("guessed-words");
+    let li = document.createElement("li");
+    li.appendChild(document.createTextNode(word));
+    ul.appendChild(li);
 }
 
 var dictionary;
