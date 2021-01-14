@@ -46,18 +46,25 @@ function checkWord() {
     if (guess.length < 4) {
         console.log("Words must be at least 4 letters long")
     }
+    // Iterate through guess and remove a letter each time it appears in the target
     for (let i = 0; i < shuffledWord.length; i++) {          
         const index = guess.indexOf(shuffledWord[i]);
         if (index > -1) {
             guess.splice(index, 1);
         }
     }
+    // Valid guesses will have had all letters removed from them
     if (guess.length == 0) {
         console.log('valid letters used from target');
-        if (dictionary.includes(document.getElementById("guess").value)) {
+        let validWord = document.getElementById("guess").value;
+        if (dictionary.includes(validWord)) {
             console.log('appears in dictionary');
-            addWordToList(document.getElementById("guess").value)
-            guesses.add(document.getElementById("guess").value.toUpperCase())
+            if (guesses.has(validWord.toUpperCase())) {
+                console.log('already guessed that word');
+            } else {
+                guesses.add(document.getElementById("guess").value.toUpperCase());
+                addWordToList(document.getElementById("guess").value.toUpperCase());
+            }
         } else {
             console.log("doesn't appear in dictionary")
         }
