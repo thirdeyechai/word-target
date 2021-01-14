@@ -57,6 +57,7 @@ function checkWord() {
         if (dictionary.includes(document.getElementById("guess").value)) {
             console.log('appears in dictionary');
             addWordToList(document.getElementById("guess").value)
+            guesses.add(document.getElementById("guess").value.toUpperCase())
         } else {
             console.log("doesn't appear in dictionary")
         }
@@ -64,6 +65,12 @@ function checkWord() {
         console.log('invalid letters from target used');
     }
 }
+// EVENT LISTENERS
+document.querySelector("#guess").addEventListener("keyup", event => {
+    if(event.key !== "Enter") return;
+    document.querySelector("#check").click();
+    event.preventDefault();
+});
 
 /** Adds a word to the list of correctly guessed words */
 function addWordToList(word) {
@@ -77,4 +84,6 @@ var dictionary;
 var targetWordList;
 var targetWord;
 var shuffledWord;
+var guesses = new Set();
+
 storeWordList();
