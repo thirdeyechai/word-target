@@ -1,3 +1,5 @@
+"use strict";
+
 /** Given a word, randomly jumbles the letters */
 function shuffleWord(word) {
     word = word.split("");  
@@ -65,6 +67,7 @@ function checkWord() {
                 guesses.add(document.getElementById("guess").value.toUpperCase());
                 addWordToList(document.getElementById("guess").value.toUpperCase());
             }
+            document.getElementById("guess").value = '';
         } else {
             console.log("doesn't appear in dictionary")
         }
@@ -92,10 +95,10 @@ function jumbleLetters() {
     fillTarget(shuffledWord);
 }
 
-var dictionary;
-var targetWordList;
-var targetWord;
-var shuffledWord;
-var guesses = new Set();
+let dictionary;
+let targetWordList;
+let targetWord;
+let shuffledWord;
+let guesses = new Set();
 
 storeWordList();
