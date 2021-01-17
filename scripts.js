@@ -42,11 +42,12 @@ function checkWord() {
     guess = guess.split("");
     var centreLetter = document.getElementById("middle-cell").innerHTML;
     if (!guess.includes(centreLetter)) {
-        console.log("Must include center letter");
+        displayError("Must include center letter");
         return;
     }
     if (guess.length < 4) {
-        console.log("Words must be at least 4 letters long")
+        displayError("Words must be at least 4 letters long");
+        return;
     }
     // Iterate through guess and remove a letter each time it appears in the target
     for (let i = 0; i < shuffledWord.length; i++) {          
@@ -69,10 +70,10 @@ function checkWord() {
             }
             document.getElementById("guess").value = '';
         } else {
-            console.log("doesn't appear in dictionary")
+            displayError("Word doesn't appear in dictionary")
         }
     } else {
-        console.log('invalid letters from target used');
+        displayError('Letters from outside target used');
     }
 }
 // EVENT LISTENERS
@@ -100,7 +101,7 @@ function displayError(message) {
     let err = document.getElementById("errors");
     err.innerHTML = message;
 
-    setInterval(function() { err.innerHTML = ""}, 5000);
+    setTimeout(function() { err.innerHTML = ""}, 5000);
 }
 
 let dictionary;
