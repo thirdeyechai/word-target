@@ -1,5 +1,26 @@
 * {box-sizing: border-box;}
 
+h1 {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+h2 {
+  margin-top: 0;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+.flex-container {
+  display: flex;
+}
+
+.flex-child {
+  flex: 1;
+}
+
+.flex-child:first-child {
+  margin-right: 20px;
+} 
+
 #grid-container {
   display: flex;
   flex-wrap: wrap;
@@ -27,5 +48,9 @@
 }
 
 #guess {
-  margin: 30px;
+  margin-top: 30px;
+}
+
+#guessed-words {
+  list-style-type: none;
 }

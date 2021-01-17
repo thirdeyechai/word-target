@@ -1,6 +1,7 @@
 <!doctype html>
 
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
 
@@ -12,23 +13,32 @@
 </head>
 
 <body>
-    <h1>Word Target</h1>
-    <div id="grid-container">
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div id="middle-cell" class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
+  <h1>Word Target</h1>
+
+  <div class="flex-container">
+    <div id="grid-container" class="flex-child">
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div id="middle-cell" class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
     </div>
-    <input type="text" id="guess" name="guess">
-    <button type="submit" id="check" onclick="checkWord()" >Check</button>
-    <h2>Guesses</h2>
-    <ul id="guessed-words"></ul>
-    
+
+    <div class="flex=child">
+      <h2>Guesses</h2>
+      <ul id="guessed-words"></ul>
+    </div>
+  </div>
+
+  <input type="text" id="guess" name="guess">
+  <button type="submit" id="check" onclick="checkWord()">Check</button>
+  <button type="button" id="jumble" onclick="jumbleLetters()">Jumble</button>
+
   <script src="scripts.js"></script>
 </body>
+
 </html>
