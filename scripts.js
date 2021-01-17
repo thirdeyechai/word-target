@@ -93,6 +93,14 @@ function addWordToList(word) {
 function jumbleLetters() {
     shuffledWord = shuffleWord(shuffledWord.join(''));
     fillTarget(shuffledWord);
+    displayError("This is an error");
+}
+/** Displays errors on screen */
+function displayError(message) {
+    let err = document.getElementById("errors");
+    err.innerHTML = message;
+
+    setInterval(function() { err.innerHTML = ""}, 5000);
 }
 
 let dictionary;

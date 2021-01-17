@@ -54,3 +54,8 @@ h2 {
 #guessed-words {
   list-style-type: none;
 }
+
+#errors {
+  margin-top: 20px;
+  color: red;
+}
