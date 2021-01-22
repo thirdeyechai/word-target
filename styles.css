@@ -79,8 +79,9 @@ button:focus {
 }
 
 #check {
-  border-radius: 2px;
+  border-radius: 5px;
   color: #8842d5;
+  border: 2px solid #8842d5;
 }
 
 #guessed-words {
