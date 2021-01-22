@@ -1,17 +1,19 @@
 * {box-sizing: border-box;}
 
 h1 {
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 h2 {
   margin-top: 0;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size: medium;
+  font-weight: 100;
 }
 
 .flex-container {
   display: flex;
-  flex-wrap: wrap;  
+  flex-wrap: wrap;
 }
 
 .flex-child {
@@ -62,13 +64,12 @@ h2 {
 #guessed-words {
   padding: 0px;
   list-style-type: none;
+  column-count: 5;
+  column-gap: 85px;
 }
 
 #guessed-words li {
   font-size: small;
-  height: 100%;
-  display: inline-block;
-  margin-right: 10px;
 }
 
 #errors {

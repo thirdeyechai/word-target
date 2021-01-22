@@ -97,7 +97,6 @@ function addWordToList(word) {
 function jumbleLetters() {
     shuffledWord = shuffleWord(shuffledWord.join(''));
     fillTarget(shuffledWord);
-    displayError("This is an error");
 }
 function updateCount() {
     document.getElementById("numberOfWords").innerHTML = guesses.size;
