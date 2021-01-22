@@ -51,8 +51,8 @@
         var guess = document.getElementById("guess").value.toUpperCase();
         guess = guess.split("");
 
-        let children = document.getElementById("grid-container").childNodes;
-        let centreLetter = children[5].innerHTML;
+        let cells = document.getElementsByClassName("cell");
+        let centreLetter = cells[4].innerHTML;
         if (!guess.includes(centreLetter)) {
             displayError("Must include center letter");
             document.getElementById("guess").value = '';
