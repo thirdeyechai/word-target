@@ -89,6 +89,7 @@ function addWordToList(word) {
     let li = document.createElement("li");
     li.appendChild(document.createTextNode(word));
     ul.prepend(li);
+    updateCount();
 }
 /** Jumbles the target letters to allow the user to view a reshuffled version of the word */
 function jumbleLetters() {
@@ -96,12 +97,23 @@ function jumbleLetters() {
     fillTarget(shuffledWord);
     displayError("This is an error");
 }
+function updateCount() {
+    document.getElementById("numberOfWords").innerHTML = 'Count: ' + guesses.size;
+}
 /** Displays errors on screen */
 function displayError(message) {
     let err = document.getElementById("errors");
     err.innerHTML = message;
 
     setTimeout(function() { err.innerHTML = ""}, 5000);
+}
+/** Flashes the letters in the target green upon correct guess */
+function flashLetters(word) {
+    let letterPositions;
+    word.split("").forEach(letter => {
+        console.log(letter);
+    });
+
 }
 
 let dictionary;

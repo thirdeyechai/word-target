@@ -30,6 +30,7 @@
 
     <div class="flex=child">
       <h2>Guesses</h2>
+      <div id="numberOfWords">Count: </div>
       <ul id="guessed-words"></ul>
     </div>
   </div>
@@ -37,6 +38,7 @@
   <input type="text" id="guess" name="guess">
   <button type="submit" id="check" onclick="checkWord()">Check</button>
   <button type="button" id="jumble" onclick="jumbleLetters()">Jumble</button>
+  <button type="button" id="jumble" onclick="flashLetters('word')">Test</button>
 
   <div id="errors"></div>
 
