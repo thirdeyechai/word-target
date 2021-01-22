@@ -5,7 +5,7 @@ h1 {
 }
 
 h2 {
-  margin-top: 0;
+  margin: 0;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
   font-size: medium;
   font-weight: 100;
@@ -36,7 +36,8 @@ h2 {
 }
 
 #guesses-container {
-  max-width:220px;
+  position: relative;
+  height: 220px;
 }
 
 .cell {
@@ -63,16 +64,28 @@ h2 {
 
 #guessed-words {
   padding: 0px;
+  height: 180px;
+  width: 300px;
   list-style-type: none;
-  column-count: 5;
-  column-gap: 85px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 #guessed-words li {
   font-size: small;
+  display: inline-block;
 }
 
 #errors {
   margin-top: 20px;
   color: red;
+}
+
+#numberOfWords {
+  font-size:x-small;
+  font-family: Arial;
+  position: absolute;
+  bottom: 0;
+  right:0;
 }

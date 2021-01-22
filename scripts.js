@@ -99,7 +99,7 @@ function jumbleLetters() {
     fillTarget(shuffledWord);
 }
 function updateCount() {
-    document.getElementById("numberOfWords").innerHTML = guesses.size;
+    document.getElementById("numberOfWords").innerHTML = 'Total Guesses: ' + guesses.size;
 }
 /** Displays errors on screen */
 function displayError(message) {
@@ -110,9 +110,9 @@ function displayError(message) {
 }
 /** Flashes the letters in the target green upon correct guess */
 function flashLetters(word) {
-    let letterPositions;
-    word.split("").forEach(letter => {
-        console.log(letter);
+    let letterPositions = new Array();
+    shuffledWord.forEach(letter => {
+        letterPositions.push()
     });
 
 }
