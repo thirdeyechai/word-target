@@ -35,7 +35,7 @@
     </div>
   </div>
 
-  <input type="text" id="guess" name="guess">
+  <input type="text" id="guess" autofocus="autofocus" onfocus="this.select()">
   <button type="submit" id="check" onclick="checkWord()">Check</button>
   <button type="button" id="jumble" onclick="jumbleLetters()">Jumble</button>
   <button type="button" id="jumble" onclick="flashLetters('word')">Test</button>
