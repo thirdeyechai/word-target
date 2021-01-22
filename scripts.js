@@ -43,10 +43,12 @@ function checkWord() {
     var centreLetter = document.getElementById("middle-cell").innerHTML;
     if (!guess.includes(centreLetter)) {
         displayError("Must include center letter");
+        document.getElementById("guess").value = '';
         return;
     }
     if (guess.length < 4) {
         displayError("Words must be at least 4 letters long");
+        document.getElementById("guess").value = '';
         return;
     }
     // Iterate through guess and remove a letter each time it appears in the target
@@ -60,7 +62,7 @@ function checkWord() {
     if (guess.length == 0) {
         console.log('valid letters used from target');
         let validWord = document.getElementById("guess").value;
-        if (dictionary.includes(validWord)) {
+        if (dictionary.includes(validWord.toLowerCase())) {
             console.log('appears in dictionary');
             if (guesses.has(validWord.toUpperCase())) {
                 console.log('already guessed that word');
@@ -68,13 +70,13 @@ function checkWord() {
                 guesses.add(document.getElementById("guess").value.toUpperCase());
                 addWordToList(document.getElementById("guess").value.toUpperCase());
             }
-            document.getElementById("guess").value = '';
         } else {
             displayError("Word doesn't appear in dictionary")
         }
     } else {
         displayError('Letters from outside target used');
     }
+    document.getElementById("guess").value = '';
 }
 // EVENT LISTENERS
 document.querySelector("#guess").addEventListener("keyup", event => {
@@ -98,7 +100,7 @@ function jumbleLetters() {
     displayError("This is an error");
 }
 function updateCount() {
-    document.getElementById("numberOfWords").innerHTML = 'Count: ' + guesses.size;
+    document.getElementById("numberOfWords").innerHTML = guesses.size;
 }
 /** Displays errors on screen */
 function displayError(message) {
