@@ -64,6 +64,7 @@ button:focus {
 
 .flash {
   background-color: greenyellow;
+  color: black;
 }
 /* .cell:nth-child(5) {
   background-color: black;
