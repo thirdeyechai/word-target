@@ -60,21 +60,19 @@ function checkWord() {
     }
     // Valid guesses will have had all letters removed from them
     if (guess.length == 0) {
-        console.log('valid letters used from target');
         let validWord = document.getElementById("guess").value;
         if (dictionary.includes(validWord.toLowerCase())) {
-            console.log('appears in dictionary');
-            if (guesses.has(validWord.toUpperCase())) {
-                console.log('already guessed that word');
+            if (guessedWords.has(validWord.toUpperCase())) {
+                displayError('Word already guessed');
             } else {
-                guesses.add(document.getElementById("guess").value.toUpperCase());
+                guessedWords.add(document.getElementById("guess").value.toUpperCase());
                 addWordToList(document.getElementById("guess").value.toUpperCase());
             }
         } else {
             displayError("Word doesn't appear in dictionary")
         }
     } else {
-        displayError('Letters from outside target used');
+        displayError('Invalid letters used');
     }
     document.getElementById("guess").value = '';
 }
@@ -99,7 +97,7 @@ function jumbleLetters() {
     fillTarget(shuffledWord);
 }
 function updateCount() {
-    document.getElementById("numberOfWords").innerHTML = 'Total Guesses: ' + guesses.size;
+    document.getElementById("numberOfWords").innerHTML = 'Total Guesses: ' + guessedWords.size;
 }
 /** Displays errors on screen */
 function displayError(message) {
@@ -110,17 +108,27 @@ function displayError(message) {
 }
 /** Flashes the letters in the target green upon correct guess */
 function flashLetters(word) {
+    let nodes = document.getElementsByClassName("cell");
+    word = word.split("");
     let letterPositions = new Array();
-    shuffledWord.forEach(letter => {
-        letterPositions.push()
-    });
 
+    for (let i = 0; i < shuffledWord.length; i++) {
+        if (word.includes(shuffledWord[i].toLowerCase())) {
+            if (letterPositions.includes(i)) {
+                break;
+            } else {
+                letterPositions.push(i);
+                nodes[i].classList.add("flash");
+                word.splice(word.indexOf(shuffledWord[i].toLowerCase()), 1);
+            }
+        }
+    }
 }
 
 let dictionary;
 let targetWordList;
 let targetWord;
 let shuffledWord;
-let guesses = new Set();
+let guessedWords = new Set();
 
 storeWordList();
