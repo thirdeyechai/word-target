@@ -106,8 +106,15 @@
     }
     /** Jumbles the target letters to allow the user to view a reshuffled version of the word */
     function jumbleLetters() {
+        let middleLetter = shuffledWord[4];
+        // remove middle letter
+        shuffledWord.splice(4,1);
+        // shuffle remaining letters
         shuffledWord = shuffleWord(shuffledWord.join(''));
+        shuffledWord = shuffledWord.join('');
+        shuffledWord = shuffledWord.substring(0, 4) + middleLetter + shuffledWord.substring(4, shuffledWord.length);
         fillTarget(shuffledWord);
+        shuffledWord = shuffledWord.split("");
     }
     function updateCount() {
         document.getElementById("numberOfWords").innerHTML = 'Total Guesses: ' + guessedWords.size;
