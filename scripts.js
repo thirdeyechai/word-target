@@ -145,5 +145,10 @@
         }, 500);
     }
 
+    /** Toggles flex container that displays the word game */
+    function toggleGameWindow() {
+        document.getElementById("gamespace").classList.add("hidden");
+    }
+
     storeWordList();
 // })();
