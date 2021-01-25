@@ -1,112 +1,149 @@
-* {box-sizing: border-box;}
+"use strict";
+// (function () {
 
-h1 {
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
+    let dictionary;
+    let targetWordList;
+    let targetWord;
+    let shuffledWord;
+    let guessedWords = new Set();
 
-h2 {
-  margin: 0;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
-  font-size: medium;
-  font-weight: 100;
-}
+    /** Given a word, randomly jumbles the letters */
+    function shuffleWord(word) {
+        word = word.split("");
+        for (let i = 0; i < word.length; i++) {
+            let j = Math.floor(Math.random() * word.length);
+            let temp = word[i];
+            word[i] = word[j];
+            word[j] = temp;
+        }
+        return word;
+    }
+    /** Populates the grid with a word */
+    function fillTarget(word) {
+        let gridCells = document.getElementById("grid-container").children;
+        for (let i = 0; i < word.length; i++) {
+            gridCells[i].innerHTML = word[i];
+        }
+    }
 
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-    outline: none;
-}
+    /** Loads a list of words from a file */
+    async function loadWordList(file) {
+        try {
+            const response = await fetch(file);
+            const text = await response.text();
+            return text;
+        } catch (error) {
+            return console.log(error);
+        }
+    }
+    /** Awaits fetch call before initialising everything */
+    async function storeWordList() {
+        dictionary = await loadWordList("words.txt");
+        dictionary = dictionary.split("\r\n");
+        targetWordList = await loadWordList("target-words.txt");
+        targetWordList = targetWordList.split("\r\n");
+        targetWord = targetWordList[Math.floor(Math.random() * targetWordList.length)];
+        shuffledWord = shuffleWord(targetWord.toUpperCase());
+        fillTarget(shuffledWord);
+    }
+    /** Checks if word guess is valid */
+    function checkWord() {
+        var guess = document.getElementById("guess").value.toUpperCase();
+        guess = guess.split("");
 
-.flex-container {
-  display: flex;
-  flex-wrap: wrap;
-}
+        let cells = document.getElementsByClassName("cell");
+        let centreLetter = cells[4].innerHTML;
+        if (!guess.includes(centreLetter)) {
+            displayError("Must include center letter");
+            document.getElementById("guess").value = '';
+            return;
+        }
+        if (guess.length < 4) {
+            displayError("Words must be at least 4 letters long");
+            document.getElementById("guess").value = '';
+            return;
+        }
+        // Iterate through guess and remove a letter each time it appears in the target
+        for (let i = 0; i < shuffledWord.length; i++) {
+            const index = guess.indexOf(shuffledWord[i]);
+            if (index > -1) {
+                guess.splice(index, 1);
+            }
+        }
+        // Valid guesses will have had all letters removed from them
+        if (guess.length == 0) {
+            let validWord = document.getElementById("guess").value;
+            if (dictionary.includes(validWord.toLowerCase())) {
+                if (guessedWords.has(validWord.toUpperCase())) {
+                    displayError('Word already guessed');
+                } else {
+                    guessedWords.add(document.getElementById("guess").value.toUpperCase());
+                    addWordToList(document.getElementById("guess").value.toUpperCase());
+                    flashLetters(document.getElementById("guess").value);
+                }
+            } else {
+                displayError("Word doesn't appear in dictionary")
+            }
+        } else {
+            displayError('Invalid letters used');
+        }
+        document.getElementById("guess").value = '';
+    }
+    // EVENT LISTENERS
+    document.querySelector("#guess").addEventListener("keyup", event => {
+        if (event.key !== "Enter") return;
+        document.querySelector("#check").click();
+        event.preventDefault();
+    });
 
-.flex-child {
-  flex: 1;
-}
+    /** Adds a word to the list of correctly guessed words */
+    function addWordToList(word) {
+        let ul = document.getElementById("guessed-words");
+        let li = document.createElement("li");
+        li.appendChild(document.createTextNode(word));
+        ul.prepend(li);
+        updateCount();
+    }
+    /** Jumbles the target letters to allow the user to view a reshuffled version of the word */
+    function jumbleLetters() {
+        shuffledWord = shuffleWord(shuffledWord.join(''));
+        fillTarget(shuffledWord);
+    }
+    function updateCount() {
+        document.getElementById("numberOfWords").innerHTML = 'Total Guesses: ' + guessedWords.size;
+    }
+    /** Displays errors on screen */
+    function displayError(message) {
+        let err = document.getElementById("errors");
+        err.innerHTML = message;
 
-.flex-child:first-child {
-  margin-right: 50px;
-}
+        setTimeout(function () { err.innerHTML = "" }, 5000);
+    }
+    /** Flashes the letters in the target green upon correct guess */
+    function flashLetters(word) {
+        let cells = document.getElementsByClassName("cell");
+        word = word.split("");
+        let letterPositions = [];
 
-#grid-container {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 214px;
-  max-height: 220px;
-  width: 100%;
-  border: solid black;
-  border-width: 4px 0 0 4px;
-  justify-content: center;
-}
+        for (let i = 0; i < shuffledWord.length; i++) {
+            if (word.includes(shuffledWord[i].toLowerCase())) {
+                if (letterPositions.includes(i)) {
+                    break;
+                } else {
+                    letterPositions.push(i);
+                    cells[i].classList.add("flash");
+                    word.splice(word.indexOf(shuffledWord[i].toLowerCase()), 1);
+                }
+            }
+        }
+        setTimeout(function() {
+            let cells = document.getElementsByClassName("cell");
+            cells = Array.from(cells);
+            cells.forEach(cell => {
+                cell.classList.remove("flash");
+            });
+        }, 500);
+    }
 
-#guesses-container {
-  position: relative;
-  height: 220px;
-}
-
-.cell {
-  flex: 1 0 32%;
-  border: solid black;
-  border-width: 0 4px 4px 0;
-  text-align: center;
-  font: 30px Arial;
-  font-weight: 500;
-  line-height: 68px;
-}
-
-.middle-cell {
-  background-color: black;
-  color: white;
-}
-
-.flash {
-  background-color: greenyellow;
-  color: black;
-}
-.hidden {
-  display: none;
-}
-
-#guess {
-  margin-top: 30px;
-  padding: 2px;
-  border: 2px solid #8842d5;
-  border-radius: 5px;
-}
-
-#check {
-  border-radius: 5px;
-  color: #8842d5;
-  border: 2px solid #8842d5;
-}
-
-#guessed-words {
-  padding: 0px;
-  height: 180px;
-  width: 300px;
-  list-style-type: none;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-}
-
-#guessed-words li {
-  font-size: small;
-  display: inline-block;
-}
-
-#errors {
-  margin-top: 20px;
-  color: red;
-}
-
-#numberOfWords {
-  font-size:x-small;
-  font-family: Arial;
-  position: absolute;
-  bottom: 0;
-  right:0;
-}
+    storeWordList();
+// })();
