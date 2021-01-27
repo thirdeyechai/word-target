@@ -15,35 +15,39 @@
 <body>
   <h1>Word Target</h1>
 
-  <div id="splashscreen"></div>
-  <div id="gamespace">
-  <div class="flex-container">
-    <div id="grid-container" class="flex-child">
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell middle-cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-    </div>
-
-    <div id="guesses-container" class="flex=child">
-      <h2>Guesses</h2>
-      <ul id="guessed-words"></ul>
-      <div id="numberOfWords">Total Guesses: </div>
-    </div>
+  <div id="splashscreen" class="hidden">
+    <p>Welcome to Word Target. To get started pleased choose from one of the following game styles.</p>
+    <button type="button" id="regular-btn" onclick="toggleGameWindow()">Regular Game</button>
+    <button type="button" id="blitz-btn" onclick="toggleGameWindow()">Blitz Game</button>
   </div>
+  <div id="gamespace">
+    <div class="flex-container">
+      <div id="grid-container" class="flex-child">
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell middle-cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+      </div>
 
-  <input type="text" id="guess" autofocus="autofocus" onfocus="this.select()">
-  <button type="submit" id="check" onclick="checkWord()">Check</button>
-  <button type="button" id="jumble" onclick="jumbleLetters()">Jumble</button>
-  <button type="button" id="test" onclick="toggleGameWindow()">Test</button>
+      <div id="guesses-container" class="flex=child">
+        <h2>Guesses</h2>
+        <ul id="guessed-words"></ul>
+        <div id="numberOfWords">Total: </div>
+      </div>
+    </div>
 
-  <div id="errors"></div>
-</div>
+    <input type="text" id="guess" autofocus="autofocus" onfocus="this.select()">
+    <button type="submit" id="check" onclick="checkWord()">Check</button>
+    <button type="button" id="jumble" onclick="jumbleLetters()">Jumble</button>
+    <button type="button" id="test" onclick="toggleGameWindow()">Test</button>
+
+    <div id="errors"></div>
+  </div>
 
   <script src="scripts.js"></script>
 </body>

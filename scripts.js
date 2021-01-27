@@ -107,12 +107,10 @@
     /** Jumbles the target letters to allow the user to view a reshuffled version of the word */
     function jumbleLetters() {
         let middleLetter = shuffledWord[4];
-        // remove middle letter
-        shuffledWord.splice(4,1);
-        // shuffle remaining letters
-        shuffledWord = shuffleWord(shuffledWord.join(''));
+        shuffledWord.splice(4,1); // remove middle letter
+        shuffledWord = shuffleWord(shuffledWord.join('')); // shuffle remaining letters
         shuffledWord = shuffledWord.join('');
-        shuffledWord = shuffledWord.substring(0, 4) + middleLetter + shuffledWord.substring(4, shuffledWord.length);
+        shuffledWord = shuffledWord.substring(0, 4) + middleLetter + shuffledWord.substring(4, shuffledWord.length); // add middle letter back
         fillTarget(shuffledWord);
         shuffledWord = shuffledWord.split("");
     }
@@ -150,6 +148,11 @@
                 cell.classList.remove("flash");
             });
         }, 500);
+    }
+
+    function toggleGameWindow() {
+        document.getElementById("gamespace").classList.toggle("hidden");
+        document.getElementById("splashscreen").classList.toggle("hidden");
     }
 
     storeWordList();
