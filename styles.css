@@ -42,6 +42,11 @@ button:focus {
   justify-content: center;
 }
 
+#splashscreen {
+  width: 300px;
+  font-size: small;
+}
+
 #guesses-container {
   position: relative;
   height: 220px;
