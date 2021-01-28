@@ -1,21 +1,20 @@
-* {box-sizing: border-box;}
+* {
+  box-sizing: border-box;
+}
 
 h1 {
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 h2 {
   margin: 0;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: medium;
   font-weight: 100;
 }
 
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-    outline: none;
+input:focus, select:focus, textarea:focus, button:focus {
+  outline: none;
 }
 
 .flex-container {
@@ -86,12 +85,14 @@ button:focus {
 #check {
   border-radius: 5px;
   color: #8842d5;
+  background-color: #e8d0ff;
   border: 2px solid #8842d5;
 }
 
 #jumble {
   border-radius: 5px;
   color: #8842d5;
+  background-color: #e8d0ff;
   border: 2px solid #8842d5;
 }
 
@@ -116,11 +117,17 @@ button:focus {
 }
 
 #numberOfWords {
-  font-size:small;
+  font-size: small;
   font-family: Arial;
   border: 3px solid black;
   padding: 5px;
   position: absolute;
   top: 0;
-  right:0;
+  right: 0;
+}
+
+#timer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
