@@ -111,8 +111,10 @@ button:focus {
 }
 
 #numberOfWords {
-  font-size:x-small;
+  font-size:small;
   font-family: Arial;
+  border: 3px solid black;
+  padding: 5px;
   position: absolute;
   bottom: 0;
   right:0;

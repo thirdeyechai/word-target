@@ -115,7 +115,7 @@
         shuffledWord = shuffledWord.split("");
     }
     function updateCount() {
-        document.getElementById("numberOfWords").innerHTML = 'Total Guesses: ' + guessedWords.size;
+        document.getElementById("numberOfWords").innerHTML = guessedWords.size;
     }
     /** Displays errors on screen */
     function displayError(message) {
