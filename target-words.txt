@@ -413,6 +413,7 @@ overnight
 districts
 introduce
 chevrolet
+parachute
 generator
 showtimes
 promoting
@@ -476,7 +477,6 @@ initially
 indicator
 eliminate
 threshold
-venezuela
 sequences
 astronomy
 translate
@@ -901,4 +901,4 @@ longitude
 insertion
 swaziland
 varieties
-mediawiki
+elemental
