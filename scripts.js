@@ -77,6 +77,7 @@
                 if (guessedWords.has(validWord.toUpperCase())) {
                     displayError('Word already guessed');
                 } else {
+                    correctChime();
                     guessedWords.add(document.getElementById("guess").value.toUpperCase());
                     addWordToList(document.getElementById("guess").value.toUpperCase());
                     flashLetters(document.getElementById("guess").value);
@@ -149,11 +150,16 @@
             });
         }, 500);
     }
-
+    /** Toggles between splash screen and game windows */
     function toggleGameWindow() {
         document.getElementById("gamespace").classList.toggle("hidden");
         document.getElementById("splashscreen").classList.toggle("hidden");
     }
 
+    /** Plays a quick chime upon correct guess */
+    function correctChime() {
+        let chime = new Audio('correct-bleep.wav');
+        chime.play();
+    }
     storeWordList();
 // })();

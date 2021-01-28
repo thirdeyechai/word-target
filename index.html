@@ -15,12 +15,15 @@
 <body>
   <h1>Word Target</h1>
 
-  <div id="splashscreen" class="hidden">
-    <p>Welcome to Word Target. To get started pleased choose from one of the following game styles.</p>
+  <div id="splashscreen">
+    <p>Welcome to Word Target. To get started pleased choose from one of the following game styles. Regular game
+      has no time limit and allows the player to play the game at their own pace. Blitz game is a timed version
+      that lets the player test their wits against the clock.
+    </p>
     <button type="button" id="regular-btn" onclick="toggleGameWindow()">Regular Game</button>
     <button type="button" id="blitz-btn" onclick="toggleGameWindow()">Blitz Game</button>
   </div>
-  <div id="gamespace">
+  <div id="gamespace" class="hidden">
     <div class="flex-container">
       <div id="grid-container" class="flex-child">
         <div class="cell"></div>
