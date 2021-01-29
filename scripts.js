@@ -102,7 +102,7 @@ function addWordToList(word) {
     let ul = document.getElementById("guessed-words");
     let li = document.createElement("li");
     li.appendChild(document.createTextNode(word));
-    ul.prepend(li);
+    ul.append(li);
     updateCount();
 }
 /** Jumbles the target letters to allow the user to view a reshuffled version of the word */
