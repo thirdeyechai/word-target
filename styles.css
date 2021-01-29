@@ -8,9 +8,9 @@ h1 {
 
 h2 {
   margin: 0;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: medium;
-  font-weight: 100;
+  font-weight: bold;
 }
 
 input:focus, select:focus, textarea:focus, button:focus {
@@ -34,7 +34,6 @@ input:focus, select:focus, textarea:focus, button:focus {
   display: flex;
   flex-wrap: wrap;
   max-width: 214px;
-  max-height: 220px;
   margin-bottom: 30px;
   width: 100%;
   border: solid black;
@@ -97,9 +96,10 @@ input:focus, select:focus, textarea:focus, button:focus {
 }
 
 #guessed-words {
+  margin-top: 8px;
   padding: 0px;
   height: 180px;
-  width: 300px;
+  width:450px;
   list-style-type: none;
   display: flex;
   flex-direction: column;
@@ -107,7 +107,8 @@ input:focus, select:focus, textarea:focus, button:focus {
 }
 
 #guessed-words li {
-  font-size: small;
+  font-size: smaller;
+  font-family: Arial, Helvetica, sans-serif;
   display: inline-block;
 }
 
