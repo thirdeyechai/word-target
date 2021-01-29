@@ -96,9 +96,9 @@ input:focus, select:focus, textarea:focus, button:focus {
 }
 
 #guessed-words {
-  margin-top: 8px;
+  margin: 8px 0px 0px;
   padding: 0px;
-  height: 180px;
+  height: 200px;
   width:450px;
   list-style-type: none;
   display: flex;
