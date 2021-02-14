@@ -44,9 +44,16 @@ async function initializeGame() {
     targetWordList = targetWordList.split("\r\n");
     targetWord = targetWordList[Math.floor(Math.random() * targetWordList.length)];
     shuffledWord = shuffleWord(targetWord.toUpperCase());
+    guessedWords = new Set();
+    document.getElementById("guessed-words").innerHTML = "";
     fillTarget(shuffledWord);
     toggleGameWindow();
-    document.getElementById("guess-input").focus()
+    document.getElementById("guess-input").focus();
+}
+/** Sets up extra components for Blitz game */
+function initializeBlitz() {
+    initializeGame();
+    countdown();
 }
 /** Checks if word guess is valid */
 function checkWord() {

@@ -13,17 +13,19 @@
 </head>
 
 <body>
+  <button id="back-btn" type="button">&lt</button>
   <h1>Word Target</h1>
 
   <div id="splashscreen">
-    <p>Welcome to Word Target. To get started please choose from one of the following game styles. Regular game
+    <p>Welcome to Word Target. The aim of the game is to find words of four letters or more. Every word must include the centre letter
+      and each letter may only be used once. There is at least one 9-letter word to be found in each game.
+    </p>
+    <p>To get started please choose from one of the following game styles. Regular game
       has no time limit and allows the player to play the game at their own pace. Blitz game is a timed version
       that lets the player test their wits against the clock.
     </p>
-    <p>The aim of the game is to find words of four letters or more. Every word must include the centre letter
-      and each letter may only be used once. There is at least one 9-letter word to be found.</p>
     <button type="button" id="regular-btn" onclick="initializeGame()">Regular Game</button>
-    <button type="button" id="blitz-btn" onclick="initializeGame()">Blitz Game</button>
+    <button type="button" id="blitz-btn" onclick="initializeBlitz()">Blitz Game</button>
   </div>
   <div id="gamespace" class="hidden">
     <div class="flex-container">

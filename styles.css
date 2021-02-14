@@ -4,6 +4,7 @@
 
 h1 {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  display: inline;
 }
 
 h2 {
@@ -13,11 +14,21 @@ h2 {
   font-weight: bold;
 }
 
+#back-btn {
+  font-size: x-large;
+  font-weight: bold;
+  text-align: center;
+  padding: 4px;
+  background-color: white;
+  border: 3px solid black;
+}
+
 input:focus, select:focus, textarea:focus, button:focus {
   outline: none;
 }
 
 .flex-container {
+  margin-top: 30px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -43,7 +54,8 @@ input:focus, select:focus, textarea:focus, button:focus {
 
 #splashscreen {
   width: 300px;
-  font-size: small;
+  font-size: medium;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #guesses-container {
