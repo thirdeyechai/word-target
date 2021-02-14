@@ -37,7 +37,7 @@ async function loadWordList(file) {
     }
 }
 /** Awaits fetch call before initialising everything */
-async function storeWordList() {
+async function initializeGame() {
     dictionary = await loadWordList("words.txt");
     dictionary = dictionary.split("\r\n");
     targetWordList = await loadWordList("target-words.txt");
@@ -45,6 +45,7 @@ async function storeWordList() {
     targetWord = targetWordList[Math.floor(Math.random() * targetWordList.length)];
     shuffledWord = shuffleWord(targetWord.toUpperCase());
     fillTarget(shuffledWord);
+    toggleGameWindow();
 }
 /** Checks if word guess is valid */
 function checkWord() {
@@ -177,6 +178,4 @@ function countdown() {
     }
     tick();
 }
-
-storeWordList();
 // })();
