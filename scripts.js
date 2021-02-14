@@ -49,19 +49,19 @@ async function initializeGame() {
 }
 /** Checks if word guess is valid */
 function checkWord() {
-    var guess = document.getElementById("guess").value.toUpperCase();
+    var guess = document.getElementById("guess-input").value.toUpperCase();
     guess = guess.split("");
 
     let cells = document.getElementsByClassName("cell");
     let centreLetter = cells[4].innerHTML;
     if (!guess.includes(centreLetter)) {
         displayError("Must include center letter");
-        document.getElementById("guess").value = '';
+        document.getElementById("guess-input").value = '';
         return;
     }
     if (guess.length < 4) {
         displayError("Words must be at least 4 letters long");
-        document.getElementById("guess").value = '';
+        document.getElementById("guess-input").value = '';
         return;
     }
     // Iterate through guess and remove a letter each time it appears in the target
@@ -73,15 +73,15 @@ function checkWord() {
     }
     // Valid guesses will have had all letters removed from them
     if (guess.length == 0) {
-        let validWord = document.getElementById("guess").value;
+        let validWord = document.getElementById("guess-input").value;
         if (dictionary.includes(validWord.toLowerCase())) {
             if (guessedWords.has(validWord.toUpperCase())) {
                 displayError('Word already guessed');
             } else {
                 correctChime();
-                guessedWords.add(document.getElementById("guess").value.toUpperCase());
-                addWordToList(document.getElementById("guess").value.toUpperCase());
-                flashLetters(document.getElementById("guess").value);
+                guessedWords.add(document.getElementById("guess-input").value.toUpperCase());
+                addWordToList(document.getElementById("guess-input").value.toUpperCase());
+                flashLetters(document.getElementById("guess-input").value);
             }
         } else {
             displayError("Word doesn't appear in dictionary")
@@ -89,10 +89,10 @@ function checkWord() {
     } else {
         displayError('Invalid letters used');
     }
-    document.getElementById("guess").value = '';
+    document.getElementById("guess-input").value = '';
 }
 // EVENT LISTENERS
-document.querySelector("#guess").addEventListener("keyup", event => {
+document.querySelector("#guess-input").addEventListener("keyup", event => {
     if (event.key !== "Enter") return;
     document.querySelector("#check").click();
     event.preventDefault();

@@ -75,10 +75,11 @@ input:focus, select:focus, textarea:focus, button:focus {
   display: none;
 }
 
-#guess {
+#guess-input {
   padding: 2px;
   border: 2px solid #8842d5;
   border-radius: 5px;
+  width: 120px;
 }
 
 #check {
@@ -120,6 +121,9 @@ input:focus, select:focus, textarea:focus, button:focus {
 #numberOfWords {
   font-size: small;
   font-family: Arial;
+  text-align: center;
+  width: 30px;
+  height: 30px; 
   border: 3px solid black;
   padding: 5px;
   position: absolute;

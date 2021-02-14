@@ -21,25 +21,31 @@
       that lets the player test their wits against the clock.
     </p>
     <p>The aim of the game is to find words of four letters or more. Every word must include the centre letter
-       and each letter may only be used once. There is at least one 9-letter word to be found.</p>
+      and each letter may only be used once. There is at least one 9-letter word to be found.</p>
     <button type="button" id="regular-btn" onclick="initializeGame()">Regular Game</button>
     <button type="button" id="blitz-btn" onclick="initializeGame()">Blitz Game</button>
   </div>
   <div id="gamespace" class="hidden">
     <div class="flex-container">
-      <div id="grid-container" class="flex-child">
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell middle-cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
+      <div class="flex-child">
+        <div id="grid-container">
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell middle-cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+        </div>
+        <input type="text" id="guess-input" autofocus="autofocus" onfocus="this.select()">
+        <button type="submit" id="check" onclick="checkWord()">Check</button>
+        <button type="button" id="jumble" onclick="jumbleLetters()">Jumble</button>
+        <button type="button" id="test" onclick="toggleGameWindow()">Test</button>
       </div>
 
-      <div id="guesses-container" class="flex=child">
+      <div id="guesses-container" class="flex-child">
         <h2>Guesses</h2>
         <ul id="guessed-words"></ul>
         <div id="numberOfWords">0</div>
@@ -47,10 +53,7 @@
       </div>
     </div>
 
-    <input type="text" id="guess" autofocus="autofocus" onfocus="this.select()">
-    <button type="submit" id="check" onclick="checkWord()">Check</button>
-    <button type="button" id="jumble" onclick="jumbleLetters()">Jumble</button>
-    <button type="button" id="test" onclick="toggleGameWindow()">Test</button>
+
 
     <div id="errors"></div>
   </div>
