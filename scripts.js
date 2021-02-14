@@ -46,6 +46,7 @@ async function initializeGame() {
     shuffledWord = shuffleWord(targetWord.toUpperCase());
     fillTarget(shuffledWord);
     toggleGameWindow();
+    document.getElementById("guess-input").focus()
 }
 /** Checks if word guess is valid */
 function checkWord() {
