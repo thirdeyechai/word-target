@@ -19,7 +19,7 @@ function shuffleWord(word) {
     return word;
 }
 /** Populates the grid with a word */
-function fillTarget(word) {
+function fillTargetGrid(word) {
     let gridCells = document.getElementById("grid-container").children;
     for (let i = 0; i < word.length; i++) {
         gridCells[i].innerHTML = word[i];
@@ -46,7 +46,7 @@ async function initializeGame() {
     shuffledWord = shuffleWord(targetWord.toUpperCase());
     guessedWords = new Set();
     document.getElementById("guessed-words").innerHTML = "";
-    fillTarget(shuffledWord);
+    fillTargetGrid(shuffledWord);
     toggleGameWindow();
     document.getElementById("guess-input").focus();
 }
@@ -121,7 +121,7 @@ function jumbleLetters() {
     shuffledWord = shuffleWord(shuffledWord.join('')); // shuffle remaining letters
     shuffledWord = shuffledWord.join('');
     shuffledWord = shuffledWord.substring(0, 4) + middleLetter + shuffledWord.substring(4, shuffledWord.length); // add middle letter back
-    fillTarget(shuffledWord);
+    fillTargetGrid(shuffledWord);
     shuffledWord = shuffledWord.split("");
 }
 function updateCount() {
